@@ -9,15 +9,18 @@ html, body{
     color: #B0CBE0;
     height: 100%;
     font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
 }
 .tree{
     background: #2B333B;
     width: 100%;
     height: 100%; 
-    margin: 5px
+    margin: 5px;
+    overflow: auto;
+    padding: 0px;
 }
 .header{
-    margin: 10px
+    margin: 10px;
 }
 .comment{
     margin: 10px;
@@ -30,25 +33,26 @@ html, body{
     
 }
 .firstSelect{
-    background: #3C546C;
+    background: #194A58;
     margin:5px;
     color: aliceblue
 }
 .secondSelect{
-    background: #3C546C;
+    background: #194A58;
     margin:5px;
     color: aliceblue
 }
 .folderName{
-    margin-top:10px;
-    margin-bottom: 10px; 
-    border-radius: 5px;
     text-align: center;
-    background: #212529;
+    background: #2C4258;
     width: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    
 }
 .commitBlock{
     margin:5px; 
+    padding: 0px;
     background: #2B333B;
 }
 .mainRow{
@@ -64,4 +68,9 @@ html, body{
 }
 .main{
     height: 100%;
+}
+.topSection{
+    color: white;
+    padding: 5px;
+    background: #252B32;
 }

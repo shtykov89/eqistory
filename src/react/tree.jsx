@@ -58,6 +58,7 @@ class Tree extends React.Component {
             <Container className="fullHeight" fluid='true'>    
                 <Row className="fullHeight">
                     <Col className="tree" xl={2} >
+                        <div className="topSection">Tree</div>
                         <Treebeard
                             data={this.state.tree}
                             onToggle={this.onToggle}
@@ -65,22 +66,10 @@ class Tree extends React.Component {
                     </Col>
                     {this.state.isFile &&
                         <React.Fragment>
-                            <Col className="commitBlock" xl={4}>
+                            <Col className="commitBlock" xl={9}>
+                                <div className="topSection">Folder</div>
                                 <div className="folderName">{this.state.name}</div>
                                 <CommitBlock showCode={this.showCode} />
-                            </Col>
-                            <Col xl={5}>
-                                <CodeBlock className="codeBlock" commits={this.state.selectedBlocks} />
-                            </Col>
-                        </React.Fragment>
-                    }
-                    {!this.state.isFile &&
-                        <React.Fragment>
-                            <Col xl={5}>
-                                <CodeBlock />
-                            </Col>
-                            <Col xl={5}>
-                                <CodeBlock />
                             </Col>
                         </React.Fragment>
                     }
