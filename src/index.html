@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./react/prism.css">
+  <link rel="stylesheet" href="./react/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+</head>
+
+
+<body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0">
+  <div id="App"></div>
+</body>
+
+
+<script type="text/jsx">
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {AppContainer} from 'react-hot-loader';
+
+require('electron').ipcRenderer.on('commits', (event, message) => {
+  const data = JSON.parse(message);
+  render(data);
+})
+
+const render = (data) => {
+  const App = require('./react/app').default;
+  ReactDOM.render(<AppContainer ><App commits={data.commits} fs={data.fs}/></AppContainer>, document.getElementById('App'));
+}
+
+if (module.hot) {
+  module.hot.accept(render);
+}
+</script>
+
+</html>
