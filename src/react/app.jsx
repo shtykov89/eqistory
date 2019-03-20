@@ -1,11 +1,11 @@
 import React from 'react';
-import Tree from './tree';
+import MainPage from './mainPage';
 
 export default class App extends React.Component {
   render() {
     return (
       <div className="main">
-        <Tree fs={this.props.fs} />
+        <MainPage fs={this.props.fs} />
       </div>);
   }
 }
