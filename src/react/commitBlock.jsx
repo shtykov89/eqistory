@@ -1,7 +1,6 @@
 import React from 'react';
 import { commits } from '../data.js';
 import Col from 'react-bootstrap/Col';
-import Codeblock from './codeBlock'
 
 class CommitBlock extends React.Component {
     constructor(props) {
@@ -22,8 +21,8 @@ class CommitBlock extends React.Component {
         } else {
             newBlocks.push(id);
         }
-        this.props.showCode(newBlocks);
         this.setState({ selectedBlocks: newBlocks })
+        this.props.showCode(newBlocks);
     }
 
     diffSelect(id) {
@@ -44,20 +43,22 @@ class CommitBlock extends React.Component {
 
     render() {
         return (
-            <Col className="commitBlock" xl={8}>
+            <Col className="commitBlock" xl={4}>
                 <div className="topSection">Folder</div>
                 <div className="folderName">{this.props.name}</div>
-                {commits.map(d => (
-                    <div
-                        key={d.id}
-                        className={this.diffSelect(d.id)}
-                        onClick={() => {
-                            this.onSelect(d.id);
-                        }}>
-                        <div className="header">{d.header}</div>
-                        <p className="comment">{d.comment}</p>
-                    </div>)
-                )}
+                {
+                    commits.map(data => (
+                        <div
+                            key={data.id}
+                            className={this.diffSelect(data.id)}
+                            onClick={() => {
+                                this.onSelect(data.id);
+                            }}>
+                            <div className="header">{data.header}</div>
+                            <p className="comment">{data.comment}</p>
+                        </div>)
+                    )
+                }
             </Col>
         )
     }

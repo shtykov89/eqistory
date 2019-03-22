@@ -1,5 +1,4 @@
 import React from 'react';
-import { Treebeard } from 'react-treebeard';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import CodeBlock from './codeBlock';
@@ -10,7 +9,7 @@ class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            code: [],
+            newBlocks: [],
             isFile: false,
             name: ''
         };
@@ -19,33 +18,35 @@ class MainPage extends React.Component {
         this.showName = this.showName.bind(this);
     }
 
-
     showCode(value) {
-        console.log(this.state.code)
-        this.setState({ selectedBlocks: value })
-    };
+        this.setState({ newBlocks: value })
+    }
+
     isFileUpdate(value) {
         this.setState({ isFile: value })
-    };
+    }
+
     showName(value) {
         this.setState({ name: value })
-    };
+    }
 
     render() {
         return (
             <Container className="fullHeight" fluid='true'>
                 <Row className="fullHeight">
-                    <Tree 
+                    <Tree
                         fs={this.props.fs}
                         isFileUpdate={this.isFileUpdate}
                         showName={this.showName}
                     />
-                    {this.state.isFile &&
+                    {
+                        this.state.isFile &&
                         <CommitBlock
                             showCode={this.showCode}
                             name={this.state.name}
-                        />}
-                    <CodeBlock/>    
+                        />
+                    }
+                    <CodeBlock commits={this.state.newBlocks} />
                 </Row>
             </Container>
         );

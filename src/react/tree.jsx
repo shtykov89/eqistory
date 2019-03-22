@@ -10,6 +10,7 @@ class Tree extends React.Component {
         }
         this.onToggle = this.onToggle.bind(this);
     }
+
     componentDidMount() {
         const tree = this.getNode('root', this.props.fs)
         tree.toggled = true;
@@ -17,6 +18,7 @@ class Tree extends React.Component {
             tree: tree
         })
     }
+
     getNode(name, node) {
         if (node.path) {
             return { name: name, isFile: true }
@@ -27,22 +29,27 @@ class Tree extends React.Component {
             children: children.map(child => this.getNode(child[0], child[1]))
         };
     }
-    onToggle(node, toggled) {
 
-        if (this.state.cursor) { this.state.cursor.active = false; }
+    onToggle(node, toggled) {
+        if (this.state.cursor) {
+            this.state.cursor.active = false;
+        }
         node.active = true;
-        if (node.children) { node.toggled = toggled; }
+        if (node.children) {
+            node.toggled = toggled;
+        }
         this.setState({
             cursor: node,
             isFile: node.isFile,
             name: node.name
         });
-        this.props.isFileUpdate(this.state.isFile);
-        this.props.showName(this.state.name);
+        this.props.isFileUpdate(node.isFile);
+        this.props.showName(node.name);
     }
 
     render() {
         if (!this.state.tree) return null;
+
         return (
             <Col className="tree" xl={2} >
                 <div className="topSection">Tree</div>
@@ -50,7 +57,8 @@ class Tree extends React.Component {
                     data={this.state.tree}
                     onToggle={this.onToggle}
                 />
-            </Col>)
+            </Col>
+        )
     }
 }
 
