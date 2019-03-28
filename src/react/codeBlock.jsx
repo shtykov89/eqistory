@@ -14,15 +14,19 @@ class CodeBlock extends React.Component {
     const codeBlocks =
       commits
         .filter((c) => {
-          return this.props.commits.indexOf(c.id) >= 0
+          return this.props.commits
+          .sort((a,b) => {
+            return a - b
+          })
+          .indexOf(c.id) >= 0
         })
         .map((c) => {
           return c.code
         });
 
     const lines = Diff.diffLines(codeBlocks[0], codeBlocks[1]);
-    console.log(codeBlocks[1])
-
+    console.log(this.props.commits)
+    
     return (
       <Col xl={4}>
         <pre className="line-numbers codeBlock">

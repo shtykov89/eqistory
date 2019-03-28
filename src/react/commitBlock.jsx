@@ -64,7 +64,7 @@ class CommitBlock extends React.Component {
                             }}>
                             <div className="header">{data.header}</div>
                             <p className="comment">{data.comment}</p>
-                            <p>{data.date}</p>
+                            <p className="date">{data.date}</p>
                         </div>)
                     )
                 }
