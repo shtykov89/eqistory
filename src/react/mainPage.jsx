@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import CodeBlock from './codeBlock';
 import CommitBlock from './commitBlock';
-import Tree from './tree'
+import Tree from './tree';
+import Col from 'react-bootstrap/Col';
 
 class MainPage extends React.Component {
     constructor(props) {

@@ -27,8 +27,8 @@ require('electron').ipcRenderer.on('commits', (event, message) => {
 })
 
 const render = (data) => {
-  const App = require('./react/app').default;
-  ReactDOM.render(<AppContainer ><App fs={data.fs}/></AppContainer>, document.getElementById('App'));
+  const MainPage = require('./react/mainPage').default;
+  ReactDOM.render(<AppContainer ><MainPage fs={data.fs}/></AppContainer>, document.getElementById('App'));
 }
 
 if (module.hot) {

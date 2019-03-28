@@ -42,12 +42,20 @@ class CommitBlock extends React.Component {
     }
 
     render() {
+
+        const sortedCommits = commits.sort(function(a,b){
+            let firstDate = new Date(a.date.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+            let secondDate = new Date(b.date.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
+            return firstDate - secondDate
+          });
+          
+
         return (
             <Col className="commitBlock" xl={4}>
                 <div className="topSection">Folder</div>
                 <div className="folderName">{this.props.name}</div>
                 {
-                    commits.map(data => (
+                    sortedCommits.map(data => (
                         <div
                             key={data.id}
                             className={this.diffSelect(data.id)}
@@ -56,6 +64,7 @@ class CommitBlock extends React.Component {
                             }}>
                             <div className="header">{data.header}</div>
                             <p className="comment">{data.comment}</p>
+                            <p>{data.date}</p>
                         </div>)
                     )
                 }

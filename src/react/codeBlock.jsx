@@ -1,25 +1,13 @@
 import React from 'react';
-import Prism from "prismjs";
-import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js';
 import { commits } from '../data.js';
 import Col from 'react-bootstrap/Col';
-var Diff = require('diff');
+var Diff = require('diff/dist/diff.js');
 
 class CodeBlock extends React.Component {
 
-  componentDidMount() {
-    Prism.highlightAll();
-  }
-
-  highlight(){
-    let first = 'this.props.commits.code';
-    let second = 'this.props.commits.code';
-    let diff = Diff.diffLines(first,second);
-    }
-  
   render() {
 
-    if (!this.props.commits) {
+    if (!this.props.commits || this.props.commits.length !== 2) {
       return null
     }
 
@@ -30,16 +18,19 @@ class CodeBlock extends React.Component {
         })
         .map((c) => {
           return c.code
-        })
+        });
+
+    const lines = Diff.diffLines(codeBlocks[0], codeBlocks[1]);
+    console.log(codeBlocks[1])
 
     return (
       <Col xl={4}>
-        {this.highlight()}
         <pre className="line-numbers codeBlock">
           <code className="language-javascript">
             {
-              codeBlocks.map((code, i) =>
-                <span key={i}>{code}</span>)
+              lines.map((code, i) =>
+                <span className={`${code.added ? 'green' : code.removed ? 'red' : ''}`}
+                  key={i}>{code.value}</span>)
             }
           </code>
         </pre>
