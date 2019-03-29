@@ -25,10 +25,9 @@ class CodeBlock extends React.Component {
         });
 
     const lines = Diff.diffLines(codeBlocks[0], codeBlocks[1]);
-    console.log(this.props.commits)
     
     return (
-      <Col xl={4}>
+      <Col sm={4}>
         <pre className="line-numbers codeBlock">
           <code className="language-javascript">
             {

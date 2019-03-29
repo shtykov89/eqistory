@@ -51,7 +51,7 @@ class Tree extends React.Component {
         if (!this.state.tree) return null;
 
         return (
-            <Col className="tree" xl={2} >
+            <Col className="tree" sm={2} >
                 <div className="topSection">Tree</div>
                 <Treebeard
                     data={this.state.tree}

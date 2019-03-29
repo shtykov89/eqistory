@@ -5,6 +5,11 @@ html, body{
     overflow: auto;
 
 }
+@media(min-width: 0px) and (max-width:570px) {
+    html, body{
+        height: auto;
+    }
+}
 #App{
     color: #B0CBE0;
     height: 100%;
@@ -21,16 +26,18 @@ html, body{
 }
 .header{
     margin: 10px;
+    font-weight: 600;
 }
 .comment{
     margin: 10px;
+    font-size: 12px;
 }
 .commitBox{
     margin: 5px;
 }
 .notSelected{
     margin: 5px;
-    
+    background: #2c3844
 }
 .firstSelect{
     background: #194A58;
@@ -80,8 +87,10 @@ html, body{
     font-size: 10px;
 }
 .red{
-    color: red;
+    color: #FF0000;
+    background:#582F2F;
 }
 .green{
-    color: green;
+    color: #02D448;
+    background: #0E3F1E;
 }

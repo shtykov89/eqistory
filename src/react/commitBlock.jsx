@@ -51,7 +51,7 @@ class CommitBlock extends React.Component {
           
 
         return (
-            <Col className="commitBlock" xl={4}>
+            <Col className="commitBlock" sm={4}>
                 <div className="topSection">Folder</div>
                 <div className="folderName">{this.props.name}</div>
                 {
